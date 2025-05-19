@@ -1,15 +1,18 @@
 package ee.valiit.groomlyback.controller;
 
+import ee.valiit.groomlyback.LoginService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequiredArgsConstructor
 public class LoginController {
+    private final LoginService loginService;
 
     @GetMapping("/login")
-    public String login(@RequestParam String username,@RequestParam String password) {
-        //System.out.println("Kasutaja: "+username+" parool: "+password);
-        return "kasutaja: " + username+" parool: "+ password;
+    public void login(@RequestParam String username,@RequestParam String password) {
+        loginService.login(username, password);
     }
 }
