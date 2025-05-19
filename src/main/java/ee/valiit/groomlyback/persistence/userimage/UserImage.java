@@ -10,7 +10,7 @@ import org.hibernate.annotations.ColumnDefault;
 @Getter
 @Setter
 @Entity
-@Table(name = "user_image", schema = "bank")
+@Table(name = "user_image", schema = "groomly")
 public class UserImage {
     @Id
     @ColumnDefault("nextval('bank.user_image_id_seq')")
