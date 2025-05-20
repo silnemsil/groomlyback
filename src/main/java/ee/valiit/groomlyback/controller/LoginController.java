@@ -1,5 +1,6 @@
 package ee.valiit.groomlyback.controller;
 
+import ee.valiit.groomlyback.LoginResponse;
 import ee.valiit.groomlyback.services.LoginService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,8 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class LoginController {
     private final LoginService loginService;
 
+
     @GetMapping("/login")
-    public void login(@RequestParam String username,@RequestParam String password) {
-        loginService.login(username, password);
+    public LoginResponse login(@RequestParam String username, @RequestParam String password) {
+        LoginResponse loginResponse = loginService.login(username, password);
+        return loginResponse;
     }
+
 }
