@@ -14,7 +14,7 @@ import org.hibernate.annotations.ColumnDefault;
 @Setter
 @Entity
 @Table(name = "weekday", schema = "groomly")
-public class Weekday {
+public class   Weekday {
     @Id
     @ColumnDefault("nextval('groomly.weekday_id_seq')")
     @Column(name = "id", nullable = false)
