@@ -27,4 +27,9 @@ public class GroomerProcedure {
     @JoinColumn(name = "procedure_id", nullable = false)
     private Procedure procedure;
 
+        public void setBookingId(Integer id) {
+    }
+
+    public void setGroomerProcedure(Integer procedureId) {
+    }
 }
