@@ -8,16 +8,16 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/booking")
-public class Booking {
+public class BookingController {
 
-    private final Booking booking;
+private final BookingService bookingService;
 
-    public Booking(Booking booking) {
-        this.booking = booking;
+   public BookingController(BookingService bookingService) {
+       this.bookingService = bookingService;
     }
 
     @GetMapping
-    public List<Booking> getAllBookings() {
+    public List<BookingController> getAllBookings() {
         return null;
     }
 }
