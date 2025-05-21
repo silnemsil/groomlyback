@@ -4,9 +4,9 @@ import lombok.Getter;
 
 @Getter
 public enum Error {
-    INCORRECT_CREDENTIALS("Vale kasutajanimi või parool", 111),
-    NO_GROOMER_LOCATIONS_FOUND("Ei leitud ühtegi groomeri asukohta", 222),
-    LOCATION_NAME_UNAVAILABLE("Sellise nimega groomeri asukoht on juba süsteemis olemas", 333);
+    INCORRECT_CREDENTIALS("Vale kasutajanimi või parool", 111), //peavad olema komaaga eraldatud, ainult VIIMASEL semikoolon
+    NO_GROOMER_LOCATIONS_FOUND("Ei leitud ühtegi lemmiklooma iluteenindaja asukohta", 222),
+    LOCATION_NAME_UNAVAILABLE("Sellise nimega lemmiklooma iluteenindaja asukoht on juba süsteemis olemas", 333);
 
     private final String message;
     private final int errorCode;
