@@ -1,4 +1,4 @@
-package ee.valiit.groomlyback.controller;
+package ee.valiit.groomlyback.services;
 
 import ee.valiit.groomlyback.persistence.booking.Booking;
 import org.springframework.stereotype.Service;
