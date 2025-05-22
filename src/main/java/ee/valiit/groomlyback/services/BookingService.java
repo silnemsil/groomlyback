@@ -8,7 +8,5 @@ import java.util.List;
 @Service
 public class BookingService {
 
-    public List<Booking> getAllBookings(){
-        return List.of();
-    }
+
 }

@@ -10,9 +10,10 @@ import org.mapstruct.ReportingPolicy;
         unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface BookingMapper {
 
-    @Mapping(source="groomer", target = "groomerId")
-    @Mapping(source="customerUser", target = "customerUserId")
-    @Mapping(source="procedure", target = "procedureId")
-    BookingDto toBookingDto (Booking booking);
+//broneeringute koostamine
+ //  @Mapping(source="groomer", target = "groomerId")
+ //  @Mapping(source="customerUser", target = "customerUserId")
+ //  @Mapping(source="procedure", target = "procedureId")
+ //  BookingDto toBookingDto (Booking booking);
 
 }

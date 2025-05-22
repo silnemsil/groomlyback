@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class BookingDto {
-
+// ainult Id-d
     private Integer id;
     private Integer groomerId;
     private Integer customerUserId;

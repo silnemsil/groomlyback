@@ -21,4 +21,5 @@ private final BookingService bookingService;
     public List<BookingController> getAllBookings() {
         return null;
     }
+
 }
