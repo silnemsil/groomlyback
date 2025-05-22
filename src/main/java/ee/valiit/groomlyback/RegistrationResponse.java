@@ -1,10 +1,9 @@
 package ee.valiit.groomlyback;
 
-
 import lombok.Data;
 
 @Data
-public class LoginResponse {
+public class RegistrationResponse {
     private Integer userId;
-    private String roleName;
+    private String message;
 }

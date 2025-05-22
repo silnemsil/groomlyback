@@ -1,6 +1,6 @@
 package ee.valiit.groomlyback.persistence.user;
 
-import ee.valiit.groomlyback.LoginResponse;
+import ee.valiit.groomlyback.controller.login.dto.LoginResponse;
 import org.springframework.stereotype.Service;
 
 @Service

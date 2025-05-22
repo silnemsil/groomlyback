@@ -1,4 +1,4 @@
-package ee.valiit.groomlyback.controller;
+package ee.valiit.groomlyback.controller.booking;
 
 import ee.valiit.groomlyback.services.BookingService;
 import org.springframework.web.bind.annotation.GetMapping;
