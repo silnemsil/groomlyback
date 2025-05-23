@@ -5,6 +5,6 @@ import lombok.Data;
 public class RegistrationRequest {
     private String username;
     private String password;
-    private Integer roleId;
+    private Integer roleId; //MIS ID MA TAHAN!?
 
 }

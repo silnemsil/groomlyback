@@ -1,7 +1,7 @@
-package ee.valiit.groomlyback.controller;
+package ee.valiit.groomlyback.controller.registration;
 
 import ee.valiit.groomlyback.RegistrationRequest;
-import ee.valiit.groomlyback.RegistrationResponse;
+import ee.valiit.groomlyback.controller.registration.dto.RegistrationResponse;
 import ee.valiit.groomlyback.services.RegistrationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,8 +17,8 @@ public class RegistrationController {
 
 
     @PostMapping("/register")
-    //                                  ↓ Mis ANNOTATSIOON?                                     ↓↓↓ ÜMBRIKU TÜÜP   ↓ MUUTUJA NIMI
-    public RegistrationResponse register(/*slle annatoatsiooni küsisin chatGPT-lt*/@RequestBody RegistrationRequest request){
+    //  selle anndotatsioonis asin GPTlt ↓↓↓          ↓↓↓ ÜMBRIKU TÜÜP   ↓ MUUTUJA NIMI
+    public RegistrationResponse register(@RequestBody RegistrationRequest request){
         return registrationService.register(request);
     }
 }

@@ -1,8 +1,13 @@
 package ee.valiit.groomlyback.services;
 
 import ee.valiit.groomlyback.RegistrationRequest;
-import ee.valiit.groomlyback.RegistrationResponse;
+import ee.valiit.groomlyback.controller.registration.dto.RegistrationResponse;
+import ee.valiit.groomlyback.infrastructure.error.Error;
+import ee.valiit.groomlyback.infrastructure.exception.ForbiddenException;
+import ee.valiit.groomlyback.persistence.role.Role;
 import ee.valiit.groomlyback.persistence.role.RoleRepository;
+import ee.valiit.groomlyback.persistence.user.User;
+import ee.valiit.groomlyback.persistence.user.UserMapper;
 import ee.valiit.groomlyback.persistence.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,19 +18,31 @@ public class RegistrationService {
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository; // meil on vaja teada, mis roll
+    private final UserMapper userMapper;
+
 
     public RegistrationResponse register(RegistrationRequest request) {
-        //TODO: User user = new user
-        //TODO: set username
-        // TODO: set password
-        // TODO: set role
-        //TODO: salvestamine
+        Role role = roleRepository.findById(request.getRoleId())
+                .orElseThrow(()-> new ForbiddenException(Error.USERNAME_UNAVAILABLE.getMessage(), Error.USERNAME_UNAVAILABLE.getErrorCode()));
 
-        //siia tuleb kood ↑↑↑ vastaval T_O_D_O korraldustele
+        User user = userMapper.toUser(request);
+        user.setRole(role);
+        userRepository.save(user);
+
+
+//    @Mapping(source = "ei saa mäppida, peab KÄSITSI külge panema",target = "role")
+
+//        user.setRole(role);
+        //TODO: salvestamine (how?)
+
+
+
 
         //TODO: tuleb sisse uus RegistrationResponse, sellega vaja miskit teha
         //TODO: set set set
         //TODO: mõistlik return
+
+        return null;
 
     }
 }

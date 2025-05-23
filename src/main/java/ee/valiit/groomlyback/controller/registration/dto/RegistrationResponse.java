@@ -1,4 +1,4 @@
-package ee.valiit.groomlyback;
+package ee.valiit.groomlyback.controller.registration.dto;
 
 import lombok.Data;
 

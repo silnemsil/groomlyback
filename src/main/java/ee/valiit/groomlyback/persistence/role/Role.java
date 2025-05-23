@@ -21,4 +21,8 @@ public class Role {
     @Column(name = "name", nullable = false)
     private String name;
 
+    @NotNull
+    @Column(name = "status", nullable = false, length = Integer.MAX_VALUE)
+    private String status;
+
 }
