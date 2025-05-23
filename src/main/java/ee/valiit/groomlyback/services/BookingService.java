@@ -1,14 +1,16 @@
 package ee.valiit.groomlyback.services;
 
-import ee.valiit.groomlyback.persistence.booking.Booking;
+import ee.valiit.groomlyback.persistence.booking.BookingMapper;
+import ee.valiit.groomlyback.persistence.booking.BookingRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
+@RequiredArgsConstructor
 public class BookingService {
 
-    public List<Booking> getAllBookings(){
-        return List.of();
-    }
+    private final BookingRepository bookingRepository;
+    private final BookingMapper bookingMapper;
+
+
 }

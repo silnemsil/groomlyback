@@ -62,6 +62,7 @@ CREATE TABLE groomer_procedure (
     id serial  NOT NULL,
     groomer_id int  NOT NULL,
     procedure_id int  NOT NULL,
+    price decimal(5,2)  NOT NULL,
     CONSTRAINT groomer_procedure_pk PRIMARY KEY (id)
 );
 
@@ -91,7 +92,6 @@ CREATE TABLE mailbox (
 CREATE TABLE procedure (
     id serial  NOT NULL,
     name varchar(255)  NOT NULL,
-    price decimal(5,2)  NOT NULL,
     description varchar(255)  NOT NULL,
     status char(1)  NOT NULL,
     CONSTRAINT procedure_pk PRIMARY KEY (id)
