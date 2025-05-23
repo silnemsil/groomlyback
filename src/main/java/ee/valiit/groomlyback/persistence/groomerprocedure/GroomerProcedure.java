@@ -7,6 +7,8 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+
 @Getter
 @Setter
 @Entity
@@ -27,9 +29,8 @@ public class GroomerProcedure {
     @JoinColumn(name = "procedure_id", nullable = false)
     private Procedure procedure;
 
-        public void setBookingId(Integer id) {
-    }
+    @NotNull
+    @Column(name = "price", nullable = false, precision = 5, scale = 2)
+    private BigDecimal price;
 
-    public void setGroomerProcedure(Integer procedureId) {
-    }
 }

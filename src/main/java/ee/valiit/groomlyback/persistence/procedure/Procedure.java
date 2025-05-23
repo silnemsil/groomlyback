@@ -6,8 +6,6 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.math.BigDecimal;
-
 @Getter
 @Setter
 @Entity
@@ -22,10 +20,6 @@ public class Procedure {
     @NotNull
     @Column(name = "name", nullable = false)
     private String name;
-
-    @NotNull
-    @Column(name = "price", nullable = false, precision = 5, scale = 2)
-    private BigDecimal price;
 
     @Size(max = 255)
     @NotNull
