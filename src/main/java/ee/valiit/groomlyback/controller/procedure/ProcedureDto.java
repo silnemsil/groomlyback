@@ -1,4 +1,4 @@
-package ee.valiit.groomlyback.controller.procedure.dto;
+package ee.valiit.groomlyback.controller.procedure;
 
 import java.math.BigDecimal;
 
