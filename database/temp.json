@@ -1,0 +1,12 @@
+[
+  {
+    "cityName": "string",
+    "groomerId": 0,
+    "groomerName": "string",
+    "groomerDescription": "string",
+    "streetName": "string",
+    "houseNumber": "string",
+    "groomerTelNumber": "string",
+    "groomerEmail": "string"
+  }
+]

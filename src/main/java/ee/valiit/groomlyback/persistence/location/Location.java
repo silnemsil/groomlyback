@@ -7,6 +7,8 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+
 @Getter
 @Setter
 @Entity
@@ -24,15 +26,18 @@ public class Location {
 
     @Size(max = 255)
     @NotNull
-    @Column(name = "name", nullable = false)
-    private String name;
+    @Column(name = "street_name", nullable = false)
+    private String streetName;
 
-    @NotNull
-    @Column(name = "number_of_atms", nullable = false)
-    private Integer numberOfAtms;
+    @Size(max = 255)
+    @Column(name = "house_number")
+    private String houseNumber;
 
-    @NotNull
-    @Column(name = "status", nullable = false, length = Integer.MAX_VALUE)
-    private String status;
+    @Column(name = "lat", precision = 18, scale = 15)
+    private BigDecimal lat;
+
+    @Column(name = "long", precision = 18, scale = 15)
+    private BigDecimal longField;
+
 
 }

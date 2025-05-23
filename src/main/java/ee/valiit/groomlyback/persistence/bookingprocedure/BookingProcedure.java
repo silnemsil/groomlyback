@@ -7,6 +7,8 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+
 @Getter
 @Setter
 @Entity
@@ -26,5 +28,9 @@ public class BookingProcedure {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "procedure_id", nullable = false)
     private Procedure procedure;
+
+    @NotNull
+    @Column(name = "price", nullable = false, precision = 5, scale = 2)
+    private BigDecimal price;
 
 }

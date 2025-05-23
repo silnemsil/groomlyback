@@ -15,7 +15,7 @@ INSERT INTO groomly."user" (id, role_id, username, password, status) VALUES (def
 
 INSERT INTO groomly.location (id, city_id, street_name, house_number, lat, long) VALUES (default, 1, 'Aia tn', null, null, null);
 
-INSERT INTO groomly.groomer (id, location_id, name, description, tel_number, email) VALUES (default, 1, 'Nastja', 'grooming', '123', 'meil');
+INSERT INTO groomly.groomer (id, user_id, location_id, name, description, tel_number, email) VALUES (default, 2,1, 'Nastja', 'grooming', '123', 'meil');
 
 INSERT INTO groomly.booking (id, groomer_id, customer_user_id, status, total_price, date) VALUES (default, 1, 3, 'A', 140.00, '2025-05-23');
 
@@ -25,5 +25,5 @@ INSERT INTO groomly.procedure (id, name,  description, status) VALUES (default, 
 INSERT INTO groomly.groomer_procedure (id, groomer_id, procedure_id, price) VALUES (default, 1, 1, 90.00);
 INSERT INTO groomly.groomer_procedure (id, groomer_id, procedure_id, price) VALUES (default, 1, 2,50.00 );
 
-INSERT INTO groomly.booking_procedure (id, booking_id, procedure_id) VALUES (default, 1, 1);
-INSERT INTO groomly.booking_procedure (id, booking_id, procedure_id) VALUES (default, 1, 2);
+INSERT INTO groomly.booking_procedure (id, booking_id, procedure_id, price) VALUES (default, 1, 1, 90.00);
+INSERT INTO groomly.booking_procedure (id, booking_id, procedure_id, price) VALUES (default, 1, 2, 40.00);

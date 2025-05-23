@@ -18,6 +18,7 @@ CREATE TABLE booking_procedure (
     id serial  NOT NULL,
     booking_id int  NOT NULL,
     procedure_id int  NOT NULL,
+    price decimal(5,2)  NOT NULL,
     CONSTRAINT booking_procedure_pk PRIMARY KEY (id)
 );
 
@@ -31,6 +32,7 @@ CREATE TABLE city (
 -- Table: groomer
 CREATE TABLE groomer (
     id serial  NOT NULL,
+    user_id int  NOT NULL,
     location_id int  NOT NULL,
     name varchar(255)  NOT NULL,
     description varchar(500)  NOT NULL,
@@ -230,10 +232,18 @@ ALTER TABLE mailbox ADD CONSTRAINT mailbox_user_sender
 ;
 
 -- Reference: user_image_user (table: user_image)
-ALTER TABLE user_image ADD CONSTRAINT user_image_user
+ALTER TABLE groomer ADD CONSTRAINT groomer_user
     FOREIGN KEY (user_id)
     REFERENCES "user" (id)  
     NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
+;
+
+-- Reference: user_image_user (table: user_image)
+ALTER TABLE user_image ADD CONSTRAINT user_image_user
+    FOREIGN KEY (user_id)
+    REFERENCES "user" (id)
+    NOT DEFERRABLE
     INITIALLY IMMEDIATE
 ;
 
