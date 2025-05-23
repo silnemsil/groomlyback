@@ -29,19 +29,6 @@ public class RegistrationService {
         user.setRole(role);
         userRepository.save(user);
 
-
-//    @Mapping(source = "ei saa mäppida, peab KÄSITSI külge panema",target = "role")
-
-//        user.setRole(role);
-        //TODO: salvestamine (how?)
-
-
-
-
-        //TODO: tuleb sisse uus RegistrationResponse, sellega vaja miskit teha
-        //TODO: set set set
-        //TODO: mõistlik return
-
         return null;
 
     }
