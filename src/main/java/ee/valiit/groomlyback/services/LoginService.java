@@ -32,7 +32,6 @@ public class LoginService {
 
         //↓↓↓ TÜÜP    ↓↓↓ ÜMBRIKU NIMI  ↓↓↓ ÜMBRIKU NIMI  ↓↓↓ meetod mida käivitada
         LoginResponse loginResponse = userMapper.toLoginResponse(user);
-
         return loginResponse;
 
     }

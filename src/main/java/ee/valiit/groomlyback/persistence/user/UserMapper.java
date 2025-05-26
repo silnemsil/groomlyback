@@ -15,11 +15,6 @@ public interface UserMapper {
     @Mapping(source = "role.name", target = "roleName")
     LoginResponse toLoginResponse(User user);
 
-//        User user = new User();
-//        user.setUsername(request.getUsername());
-//        user.setPassword(request.getPassword());
-//        user.setStatus(Status.ACTIVE.getCode());
-
 
     @Mapping(source = "username",target = "username")
     @Mapping(source = "password",target = "password")

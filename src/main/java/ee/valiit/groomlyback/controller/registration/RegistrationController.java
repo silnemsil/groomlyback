@@ -4,10 +4,12 @@ import ee.valiit.groomlyback.RegistrationRequest;
 import ee.valiit.groomlyback.persistence.groomer.GroomerDto;
 import ee.valiit.groomlyback.services.RegistrationService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+@CrossOrigin(origins = "http://localhost:8081")
 @RestController
 @RequiredArgsConstructor
 
@@ -17,13 +19,16 @@ public class RegistrationController {
 
 
     @PostMapping("/register-customer")
-    //  selle anndotatsioonis asin GPTlt ↓↓↓          ↓↓↓ ÜMBRIKU TÜÜP   ↓ MUUTUJA NIMI
-    public void register(@RequestBody RegistrationRequest request){
-         registrationService.register(request);
+    //                                ↓ ÜMBRIKU TÜÜP     ↓ MUUTUJA NIMI
+    public void registerCustomer(@RequestBody RegistrationRequest request) {
+        registrationService.registerCustomer(request);
     }
 
-    @PostMapping("/temp")
-    public GroomerDto temp() {
-        return null;
+//TODO: tee RegistrationServices korda:
+    /*
+    @PostMapping("/register-groomer")
+    public void registerGroomer(@RequestBody GroomerDto dto) {
+        registrationService.registerGroomer(dto);
     }
+*/
 }
