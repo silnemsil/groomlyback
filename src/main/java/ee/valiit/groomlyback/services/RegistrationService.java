@@ -51,7 +51,6 @@ public class RegistrationService {
         userRepository.save(user);
 
     }
-    //TODO: see on GPT pakutu, tuleb teha ümber kasutades meie konvektsiooni
 
     public void registerGroomer(NewGroomer newGroomer) {
         if (userRepository.findByUsername(newGroomer.getGroomerEmail()).isPresent()) {
