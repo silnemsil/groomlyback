@@ -4,7 +4,13 @@ import ee.valiit.groomlyback.RegistrationRequest;
 import ee.valiit.groomlyback.infrastructure.error.Error;
 import ee.valiit.groomlyback.infrastructure.exception.ForbiddenException;
 import ee.valiit.groomlyback.infrastructure.exception.ForeignKeyNotFoundException;
+import ee.valiit.groomlyback.persistence.groomer.Groomer;
 import ee.valiit.groomlyback.persistence.groomer.GroomerDto;
+import ee.valiit.groomlyback.persistence.groomer.GroomerMapper;
+import ee.valiit.groomlyback.persistence.groomer.GroomerRepository;
+import ee.valiit.groomlyback.persistence.location.Location;
+import ee.valiit.groomlyback.persistence.location.LocationMapper;
+import ee.valiit.groomlyback.persistence.location.LocationRepository;
 import ee.valiit.groomlyback.persistence.role.Role;
 import ee.valiit.groomlyback.persistence.role.RoleRepository;
 import ee.valiit.groomlyback.persistence.user.User;
@@ -19,8 +25,15 @@ import org.springframework.stereotype.Service;
 public class RegistrationService {
 
     private final UserRepository userRepository;
-    private final RoleRepository roleRepository; // meil on vaja teada, mis roll
+    private final RoleRepository roleRepository;
     private final UserMapper userMapper;
+    private final LocationRepository locationRepository;
+    private final LocationMapper locationMapper;
+    private final GroomerRepository groomerRepository;
+    private final GroomerMapper groomerMapper;
+
+
+
 
 
     public void registerCustomer(RegistrationRequest request) {
@@ -38,47 +51,26 @@ public class RegistrationService {
 
     }
     //TODO: see on GPT pakutu, tuleb teha ümber kasutades meie konvektsiooni
-/*
-    private final UserRepository userRepository;
-    private final LocationRepository locationRepository;
-    private final GroomerRepository groomerRepository;
-    private final RoleRepository roleRepository;
 
-    public void registerGroomer(GroomerDto dto) {
-        // 1. Loo User (groomer peab olema ka kasutaja)
-        User user = new User();
-        user.setEmail(dto.getGroomerEmail());
-        user.setTelNumber(dto.getGroomerTelNumber());
-        user.setActive(true);
+    public void registerGroomer(GroomerDto groomerDto) {
+        if (userRepository.findByUsername(groomerDto.getGroomerEmail()).isPresent()) {
+            throw new ForbiddenException(Error.USERNAME_UNAVAILABLE.getMessage(), Error.USERNAME_UNAVAILABLE.getErrorCode());
+        }
 
-        // RoleId peaks olema 2 (GROOMER)
-        Role groomerRole = roleRepository.findById(2)
-                .orElseThrow(() -> new IllegalArgumentException("Role not found: 2"));
-        user.setRole(groomerRole);
+        Role role = roleRepository.findById(2) //
+                .orElseThrow(() -> new ForeignKeyNotFoundException("roleId", 2));
 
+        User user = userMapper.toUser(groomerDto);
+        user.setRole(role);
         userRepository.save(user);
 
-        // 2. Loo Location
-        Location location = new Location();
-        location.setCityId(dto.getCityId());
-        location.setStreetName(dto.getStreetName());
-        location.setHouseNumber(dto.getHouseNumber());
-
+        Location location = locationMapper.toLocation(groomerDto);
         locationRepository.save(location);
 
-        // 3. Loo Groomer
-        Groomer groomer = new Groomer();
+        Groomer groomer = groomerMapper.toGroomer(groomerDto);
         groomer.setUser(user);
         groomer.setLocation(location);
-        groomer.setName(dto.getGroomerName());
-        groomer.setDescription(dto.getGroomerDescription());
-        groomer.setTelNumber(dto.getGroomerTelNumber());
-        groomer.setEmail(dto.getGroomerEmail());
-
         groomerRepository.save(groomer);
     }
 
-
-    public void registerGroomer(GroomerDto dto) {
-    }*/
 }
