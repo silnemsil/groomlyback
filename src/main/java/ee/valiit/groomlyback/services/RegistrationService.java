@@ -1,11 +1,11 @@
 package ee.valiit.groomlyback.services;
 
-import ee.valiit.groomlyback.RegistrationRequest;
+import ee.valiit.groomlyback.NewCustomer;
 import ee.valiit.groomlyback.infrastructure.error.Error;
 import ee.valiit.groomlyback.infrastructure.exception.ForbiddenException;
 import ee.valiit.groomlyback.infrastructure.exception.ForeignKeyNotFoundException;
 import ee.valiit.groomlyback.persistence.groomer.Groomer;
-import ee.valiit.groomlyback.persistence.groomer.GroomerDto;
+import ee.valiit.groomlyback.controller.registration.dto.NewGroomer;
 import ee.valiit.groomlyback.persistence.groomer.GroomerMapper;
 import ee.valiit.groomlyback.persistence.groomer.GroomerRepository;
 import ee.valiit.groomlyback.persistence.location.Location;
@@ -24,6 +24,8 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class RegistrationService {
 
+    public static final int ROLE_GROOMER = 2;
+    public static final int ROLE_CUSTOMER = 3;
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final UserMapper userMapper;
@@ -36,38 +38,36 @@ public class RegistrationService {
 
 
 
-    public void registerCustomer(RegistrationRequest request) {
+    public void registerCustomer(NewCustomer newCustomer) {
 
-        if (userRepository.findByUsername(request.getUsername()).isPresent()) {
+        if (userRepository.findByUsername(newCustomer.getUsername()).isPresent()) {
             throw new ForbiddenException(Error.USERNAME_UNAVAILABLE.getMessage(), Error.USERNAME_UNAVAILABLE.getErrorCode());
         }
 
-        Role role = roleRepository.findById(request.getRoleId())
-                .orElseThrow(() -> new ForeignKeyNotFoundException("roleId", request.getRoleId()));
+        Role role = roleRepository.findById(ROLE_CUSTOMER).get();
 
-        User user = userMapper.toUser(request);
+        User user = userMapper.toUser(newCustomer);
         user.setRole(role);
         userRepository.save(user);
 
     }
     //TODO: see on GPT pakutu, tuleb teha ümber kasutades meie konvektsiooni
 
-    public void registerGroomer(GroomerDto groomerDto) {
-        if (userRepository.findByUsername(groomerDto.getGroomerEmail()).isPresent()) {
+    public void registerGroomer(NewGroomer newGroomer) {
+        if (userRepository.findByUsername(newGroomer.getGroomerEmail()).isPresent()) {
             throw new ForbiddenException(Error.USERNAME_UNAVAILABLE.getMessage(), Error.USERNAME_UNAVAILABLE.getErrorCode());
         }
 
-        Role role = roleRepository.findById(2) //
-                .orElseThrow(() -> new ForeignKeyNotFoundException("roleId", 2));
+        Role role = roleRepository.findById(ROLE_GROOMER).get();
 
-        User user = userMapper.toUser(groomerDto);
+        User user = userMapper.toUser(newGroomer);
         user.setRole(role);
         userRepository.save(user);
 
-        Location location = locationMapper.toLocation(groomerDto);
+        Location location = locationMapper.toLocation(newGroomer);
         locationRepository.save(location);
 
-        Groomer groomer = groomerMapper.toGroomer(groomerDto);
+        Groomer groomer = groomerMapper.toGroomer(newGroomer);
         groomer.setUser(user);
         groomer.setLocation(location);
         groomerRepository.save(groomer);

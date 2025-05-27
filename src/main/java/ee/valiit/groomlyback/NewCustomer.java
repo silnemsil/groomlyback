@@ -2,9 +2,7 @@ package ee.valiit.groomlyback;
 
 import lombok.Data;
 @Data
-public class RegistrationRequest {
+public class NewCustomer {
     private String username;
     private String password;
-    private Integer roleId;
-
 }

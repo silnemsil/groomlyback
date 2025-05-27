@@ -1,20 +1,20 @@
-package ee.valiit.groomlyback.persistence.groomer;
+package ee.valiit.groomlyback.controller.registration.dto;
 
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import ee.valiit.groomlyback.NewCustomer;
+import ee.valiit.groomlyback.persistence.groomer.Groomer;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
-/**
- * DTO for {@link Groomer}
- */
+
 @Data
+@EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
 @NoArgsConstructor
-public class GroomerDto implements Serializable {
+public class NewGroomer extends NewCustomer implements Serializable {
     private Integer cityId;
     private String streetName;
     private String houseNumber;
