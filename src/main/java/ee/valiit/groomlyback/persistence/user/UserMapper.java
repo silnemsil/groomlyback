@@ -1,8 +1,9 @@
 package ee.valiit.groomlyback.persistence.user;
 
-import ee.valiit.groomlyback.RegistrationRequest;
+import ee.valiit.groomlyback.NewCustomer;
 import ee.valiit.groomlyback.Status;
 import ee.valiit.groomlyback.controller.login.dto.LoginResponse;
+import ee.valiit.groomlyback.controller.registration.dto.NewGroomer;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
@@ -15,16 +16,17 @@ public interface UserMapper {
     @Mapping(source = "role.name", target = "roleName")
     LoginResponse toLoginResponse(User user);
 
-//        User user = new User();
-//        user.setUsername(request.getUsername());
-//        user.setPassword(request.getPassword());
-//        user.setStatus(Status.ACTIVE.getCode());
-
 
     @Mapping(source = "username",target = "username")
     @Mapping(source = "password",target = "password")
     @Mapping(expression = "java(Status.ACTIVE.getCode())",target = "status")
-    User toUser(RegistrationRequest registrationRequest);
+    User toUser(NewCustomer newCustomer);
+
+
+    @Mapping(expression = "java(Status.ACTIVE.getCode())",target = "status")
+    User toUser(NewGroomer newGroomer);
+
+
 
 
 }

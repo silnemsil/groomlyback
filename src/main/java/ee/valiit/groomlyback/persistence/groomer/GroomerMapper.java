@@ -1,25 +1,23 @@
 package ee.valiit.groomlyback.persistence.groomer;
 
 import ee.valiit.groomlyback.controller.groomer.dto.GroomerDto;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.MappingConstants;
-import org.mapstruct.ReportingPolicy;
+import ee.valiit.groomlyback.controller.registration.dto.NewGroomer;
+import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
-
 public interface GroomerMapper {
 
+    @Mapping(source = "groomerName", target = "name")
+    @Mapping(source = "groomerDescription", target = "description")
+    @Mapping(source = "groomerTelNumber", target = "telNumber")
+    @Mapping(source = "groomerEmail", target = "email")
+    Groomer toGroomer(NewGroomer newGroomer);
 
-    @Mapping(source = "id", target = "groomerId")
-    @Mapping(source = "", target = "streetName")
-    @Mapping(source = "location", target = "streetName")
-    @Mapping(source = "", target = "")
-    @Mapping(source = "", target = "")
-    @Mapping(source = "", target = "")
-    @Mapping(source = "", target = "")
-    GroomerDto toDtos (Groomer groomer);
-
+    // Entiteedist DTO-ks
     @Mapping(source = "name", target = "groomerName")
-
+    @Mapping(source = "description", target = "groomerDescription")
+    @Mapping(source = "telNumber", target = "groomerTelNumber")
+    @Mapping(source = "email", target = "groomerEmail")
+    @Mapping(source = "location.city.id", target = "cityId") // NB: location → city → id
+    GroomerDto toDto(Groomer groomer);
 }
