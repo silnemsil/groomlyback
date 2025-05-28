@@ -1,7 +1,7 @@
 package ee.valiit.groomlyback.controller.registration;
 
 import ee.valiit.groomlyback.RegistrationRequest;
-import ee.valiit.groomlyback.persistence.groomer.GroomerDto;
+import ee.valiit.groomlyback.controller.groomer.dto.GroomerDto;
 import ee.valiit.groomlyback.services.RegistrationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;

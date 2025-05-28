@@ -1,7 +1,6 @@
-package ee.valiit.groomlyback.persistence.groomer;
+package ee.valiit.groomlyback.controller.groomer.dto;
 
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import ee.valiit.groomlyback.persistence.groomer.Groomer;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
