@@ -1,6 +1,7 @@
 package ee.valiit.groomlyback.services;
 
 import ee.valiit.groomlyback.controller.groomer.dto.GroomerDto;
+import ee.valiit.groomlyback.persistence.groomer.Groomer;
 import ee.valiit.groomlyback.persistence.groomer.GroomerMapper;
 import ee.valiit.groomlyback.persistence.groomer.GroomerRepository;
 import org.springframework.stereotype.Service;
@@ -25,4 +26,12 @@ public class GroomerService {
                 .map(groomerMapper::toDto)
                 .collect(Collectors.toList());
     }
+
+    public GroomerDto getGroomerDetails(Integer groomerId) {
+        Groomer groomer = groomerRepository.findById(groomerId)
+                .orElseThrow(() -> new RuntimeException("Groomer not found with id: " + groomerId));
+        return groomerMapper.toDto(groomer);
+    }
+
 }
+

@@ -32,6 +32,10 @@ public class RegistrationController {
 
 
     @PostMapping("/registration-groomer")
+    @Operation(summary = "Lemmiklooma iluteenindaja registreerimine")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "OK"),
+            @ApiResponse(responseCode = "403", description = "Sellise kasutajanimega kasutaja on juba olemas, errorCode 444", content = @Content(schema = @Schema(implementation = ApiError.class)))})
     public void registerGroomer(@RequestBody NewGroomer newGroomer) {
         registrationService.registerGroomer(newGroomer);
     }
