@@ -1,6 +1,7 @@
 INSERT INTO groomly.city (id, name) VALUES (default, 'Tallinn');
 INSERT INTO groomly.city (id, name) VALUES (default, 'Tartu');
 INSERT INTO groomly.city (id, name) VALUES (default, 'Pärnu');
+INSERT INTO groomly.city (id, name) VALUES (default, 'Võru');
 
 INSERT INTO groomly.role (id, name, status) VALUES (default, 'admin', 'A');
 INSERT INTO groomly.role (id, name, status) VALUES (default, 'groomer', 'A');
@@ -13,9 +14,13 @@ INSERT INTO groomly."user" (id, role_id, username, password, status) VALUES (def
 
 
 
-INSERT INTO groomly.location (id, city_id, street_name, house_number, lat, long) VALUES (default, 1, 'Aia tn', null, null, null);
+INSERT INTO groomly.location (id, city_id, street_name, house_number, lat, long) VALUES (default, 1, 'Aia tn', 15, null, null);
+INSERT INTO groomly.location (id, city_id, street_name, house_number, lat, long) VALUES (default, 2, 'Tartu tn', 5, null, null);
+INSERT INTO groomly.location (id, city_id, street_name, house_number, lat, long) VALUES (default, 3, 'Pärnu tn', 3, null, null);
 
 INSERT INTO groomly.groomer (id, user_id, location_id, name, description, tel_number, email) VALUES (default, 2,1, 'Nastja', 'grooming', '123', 'meil');
+INSERT INTO groomly.groomer (id, user_id, location_id, name, description, tel_number, email) VALUES (default, 3,2, 'Silver', 'total grooming', '456', 'meil1');
+INSERT INTO groomly.groomer (id, user_id, location_id, name, description, tel_number, email) VALUES (default, 4,3, 'Mart', 'grooming üle Eesti', '789', 'meil2');
 
 INSERT INTO groomly.booking (id, groomer_id, customer_user_id, status, total_price, date) VALUES (default, 1, 3, 'A', 140.00, '2025-05-23');
 
