@@ -20,6 +20,7 @@ public class GroomerController {
         this.groomerService = groomerService;
     }
 
+
     @GetMapping("/groomers")
     public List<GroomerDto> getAllGroomers() {
         return groomerService.getAllGroomers();

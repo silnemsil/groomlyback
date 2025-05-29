@@ -4,8 +4,6 @@ import ee.valiit.groomlyback.controller.groomer.dto.GroomerDto;
 import ee.valiit.groomlyback.controller.registration.dto.NewGroomer;
 import org.mapstruct.*;
 
-import java.util.List;
-
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
 public interface GroomerMapper {
 
@@ -22,7 +20,4 @@ public interface GroomerMapper {
     @Mapping(source = "email", target = "groomerEmail")
     @Mapping(source = "location.city.id", target = "cityId") // NB: location → city → id
     GroomerDto toDto(Groomer groomer);
-
-    List<GroomerDto> toDtoList(List<Groomer> groomers);
 }
-

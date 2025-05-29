@@ -1,13 +1,9 @@
 package ee.valiit.groomlyback.services;
 
 import ee.valiit.groomlyback.controller.groomer.dto.GroomerDto;
-import ee.valiit.groomlyback.persistence.groomer.Groomer;
 import ee.valiit.groomlyback.persistence.groomer.GroomerMapper;
 import ee.valiit.groomlyback.persistence.groomer.GroomerRepository;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.server.ResponseStatusException;
 
 
 import java.util.List;

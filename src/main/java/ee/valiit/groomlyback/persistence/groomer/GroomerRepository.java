@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
+
 public interface GroomerRepository extends JpaRepository<Groomer, Integer> {
 
 // otsime groomeri linna järgi

@@ -16,6 +16,6 @@ public class GroomerDto implements Serializable {
     private String groomerDescription;
     private String groomerTelNumber;
     private String groomerEmail;
-    private String streetName;   // kui soovid ka aadressi infot edasi anda
-    private String houseNumber;  // sama siin
+    private String streetName;
+    private String houseNumber;
 }
