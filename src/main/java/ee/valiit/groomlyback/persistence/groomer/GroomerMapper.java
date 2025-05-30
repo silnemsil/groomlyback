@@ -21,7 +21,7 @@ public interface GroomerMapper {
     @Mapping(source = "telNumber", target = "groomerTelNumber")
     @Mapping(source = "email", target = "groomerEmail")
     @Mapping(source = "location.city.id", target = "cityId") // NB: location → city → id
-    GroomerDto toDto(Groomer groomer);
+    GroomerDto toGroomerDto(Groomer groomer);
 
-    List<GroomerDto> toDtoList(List<Groomer> groomers);
+    List<GroomerDto> toGroomerDtos(List<Groomer> groomers);
 }

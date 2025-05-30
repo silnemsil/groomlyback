@@ -10,7 +10,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GroomerDto implements Serializable {
-    private Integer id;  // groomeri ID, kasulik response'is
+    private Integer groomerId;
     private Integer cityId;
     private String groomerName;
     private String groomerDescription;
