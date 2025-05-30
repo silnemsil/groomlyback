@@ -1,21 +1,21 @@
 package ee.valiit.groomlyback.controller.booking;
 
-import ee.valiit.groomlyback.controller.booking.dto.BookingDto;
+import ee.valiit.groomlyback.controller.booking.dto.BookingRequestDto;
 import ee.valiit.groomlyback.services.BookingService;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
-import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequiredArgsConstructor
+@RequestMapping("/book")
 public class BookingController {
 
-private final BookingService bookingService;
+    private final BookingService bookingService;
 
+    public BookingController(BookingService bookingService) {
+        this.bookingService = bookingService;
+    }
 
+    @PostMapping("/groomer-procedure")
+    public void createBooking(@RequestBody BookingRequestDto bookingRequestDto) {
+        bookingService.createBooking(bookingRequestDto);
+    }
 }
