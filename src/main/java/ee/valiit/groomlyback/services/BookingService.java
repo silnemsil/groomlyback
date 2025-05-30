@@ -9,6 +9,7 @@ import ee.valiit.groomlyback.persistence.groomerprocedure.GroomerProcedure;
 import ee.valiit.groomlyback.persistence.groomerprocedure.GroomerProcedureRepository;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Service
@@ -30,13 +31,25 @@ public class BookingService {
         GroomerProcedure groomerProcedure = groomerProcedureRepository.findById(dto.getProcedureId())
                 .orElseThrow(() -> new RuntimeException("Groomer procedure not found"));
 
+        // todo: kontorlli kas booking on uba olemas, kui jah, siis otsi see booking välja (pead sellel total proce muutma
+        // todo kui ei ole olemas siis uus booking
+
+        // see osa vaid siis kui pole bookingut
         // 1. Salvesta booking
         Booking booking = new Booking();
         booking.setCustomerUserId(dto.getCustomerUserId());
         booking.setGroomer(groomerProcedure.getGroomer());
-        booking.setTotalPrice(dto.getProcedurePrice());
         booking.setDate(LocalDate.now()); // või tulevikus valitav kuupäev
         booking.setStatus("A"); // "A" = aktiivne
+
+
+        // see osa siis ok kui pole bookingut
+        BigDecimal currentTotalPrice = dto.getProcedurePrice();
+
+        BigDecimal newTotalPrice = dto.getProcedurePrice();
+
+
+        booking.setTotalPrice(newTotalPrice);
         bookingRepository.save(booking);
 
         // 2. Salvesta booking_procedure

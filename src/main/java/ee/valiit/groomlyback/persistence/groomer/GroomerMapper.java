@@ -16,11 +16,14 @@ public interface GroomerMapper {
     Groomer toGroomer(NewGroomer newGroomer);
 
     // Entiteedist DTO-ks
+    @Mapping(source = "id", target = "groomerId")
     @Mapping(source = "name", target = "groomerName")
     @Mapping(source = "description", target = "groomerDescription")
     @Mapping(source = "telNumber", target = "groomerTelNumber")
     @Mapping(source = "email", target = "groomerEmail")
     @Mapping(source = "location.city.id", target = "cityId") // NB: location → city → id
+    @Mapping(source = "location.streetName", target = "streetName") // NB: location → city → id
+    @Mapping(source = "location.houseNumber", target = "houseNumber") // NB: location → city → id
     GroomerDto toGroomerDto(Groomer groomer);
 
     List<GroomerDto> toGroomerDtos(List<Groomer> groomers);

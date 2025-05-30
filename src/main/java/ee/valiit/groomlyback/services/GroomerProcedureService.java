@@ -22,7 +22,7 @@ public class GroomerProcedureService {
     }
 
     public List<GroomerProcedureDto> getGroomerProcedures(Integer groomerId) {
-        List<GroomerProcedure> procedures = groomerProcedureRepository.findAllByGroomer_Id(groomerId);
+        List<GroomerProcedure> procedures = groomerProcedureRepository.findGroomerProceduresBy(groomerId);
         return procedures.stream().map(groomerProcedureMapper::toGroomerProcedureDto).collect(Collectors.toList());
     }
 }
