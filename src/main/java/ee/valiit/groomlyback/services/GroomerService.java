@@ -57,7 +57,14 @@ public class GroomerService {
     public GroomerDto getGroomerDetails(Integer groomerId) {
         Groomer groomer = groomerRepository.findById(groomerId)
                 .orElseThrow(() -> new RuntimeException("Groomer not found with id: " + groomerId));
-        return groomerMapper.toGroomerDto(groomer);
+
+        GroomerDto groomerDto = groomerMapper.toGroomerDto(groomer);
+
+        List<GroomerProcedure> groomerProcedures = groomerProcedureRepository.findGroomerProceduresBy(groomerId);
+        List<ProcedureInfo> procedures = groomerProcedureMapper.toProcedureInfos(groomerProcedures);
+        groomerDto.setProcedures(procedures);
+
+        return groomerDto;
     }
 
 
