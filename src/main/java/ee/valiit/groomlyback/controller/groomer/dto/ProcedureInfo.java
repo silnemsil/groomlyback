@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 @Data
 public class ProcedureInfo {
-    private Integer procedureId;
+    private Integer groomerProcedureId;
     private String procedureName;
     private BigDecimal procedurePrice;
 }

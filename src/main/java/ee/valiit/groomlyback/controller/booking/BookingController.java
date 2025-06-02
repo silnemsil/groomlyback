@@ -1,11 +1,10 @@
 package ee.valiit.groomlyback.controller.booking;
 
-import ee.valiit.groomlyback.controller.booking.dto.BookingRequestDto;
+import ee.valiit.groomlyback.controller.booking.dto.BasketShortInfo;
 import ee.valiit.groomlyback.services.BookingService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/book")
 public class BookingController {
 
     private final BookingService bookingService;
@@ -14,8 +13,14 @@ public class BookingController {
         this.bookingService = bookingService;
     }
 
-    @PostMapping("/groomer-procedure")
-    public void createBooking(@RequestBody BookingRequestDto bookingRequestDto) {
-        bookingService.createBooking(bookingRequestDto);
+    @PostMapping("/booking/groomer-procedure")
+    public void createBooking(@RequestParam Integer customerUserId, @RequestParam Integer groomerProcedureId) {
+        bookingService.createBooking(customerUserId, groomerProcedureId);
     }
+
+    @GetMapping("/booking/short-basket-info")
+    public BasketShortInfo getBasketShortInfo(@RequestParam Integer userId) {
+        return bookingService.getBasketShortInfo(userId);
+    }
+
 }

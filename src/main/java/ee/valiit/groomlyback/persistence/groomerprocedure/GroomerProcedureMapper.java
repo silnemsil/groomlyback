@@ -15,7 +15,7 @@ public interface GroomerProcedureMapper {
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     GroomerProcedure partialUpdate(GroomerProcedureDto groomerProcedureDto, @MappingTarget GroomerProcedure groomerProcedure);
 
-    @Mapping(source = "procedure.id", target = "procedureId")
+    @Mapping(source = "id", target = "groomerProcedureId")
     @Mapping(source = "procedure.name", target = "procedureName")
     @Mapping(source = "price", target = "procedurePrice")
     ProcedureInfo toProcedureInfos(GroomerProcedure groomerProcedure);

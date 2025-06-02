@@ -5,8 +5,8 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 @Data
-public class BookingRequestDto {
+public class BookingRequest {
     private Integer customerUserId;
-    private Integer procedureId;
+    private Integer groomerProcedureId;
     private BigDecimal procedurePrice;
 }

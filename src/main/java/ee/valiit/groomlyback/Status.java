@@ -5,6 +5,8 @@ import lombok.Getter;
 @Getter
 public enum Status {
     ACTIVE("A"),
+    PENDING("P"),
+    COMPLETE("C"),
     DELETED("D");
 
     private final String code;
