@@ -2,11 +2,13 @@ package ee.valiit.groomlyback.services;
 
 import ee.valiit.groomlyback.Status;
 import ee.valiit.groomlyback.controller.booking.dto.BasketShortInfo;
+import ee.valiit.groomlyback.controller.booking.dto.BookingProcedureDto;
 import ee.valiit.groomlyback.infrastructure.exception.ForeignKeyNotFoundException;
 import ee.valiit.groomlyback.infrastructure.exception.PrimaryKeyNotFoundException;
 import ee.valiit.groomlyback.persistence.booking.Booking;
 import ee.valiit.groomlyback.persistence.booking.BookingRepository;
 import ee.valiit.groomlyback.persistence.bookingprocedure.BookingProcedure;
+import ee.valiit.groomlyback.persistence.bookingprocedure.BookingProcedureMapper;
 import ee.valiit.groomlyback.persistence.bookingprocedure.BookingProcedureRepository;
 import ee.valiit.groomlyback.persistence.groomer.Groomer;
 import ee.valiit.groomlyback.persistence.groomer.GroomerRepository;
@@ -20,6 +22,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -30,15 +33,17 @@ public class BookingService {
     private final GroomerProcedureRepository groomerProcedureRepository;
     private final GroomerRepository groomerRepository;
     private final UserRepository userRepository;
+    private final BookingProcedureMapper bookingProcedureMapper;
 
     public BookingService(BookingRepository bookingRepository,
                           BookingProcedureRepository bookingProcedureRepository,
-                          GroomerProcedureRepository groomerProcedureRepository, GroomerRepository groomerRepository, UserRepository userRepository) {
+                          GroomerProcedureRepository groomerProcedureRepository, GroomerRepository groomerRepository, UserRepository userRepository, BookingProcedureMapper bookingProcedureMapper) {
         this.bookingRepository = bookingRepository;
         this.bookingProcedureRepository = bookingProcedureRepository;
         this.groomerProcedureRepository = groomerProcedureRepository;
         this.groomerRepository = groomerRepository;
         this.userRepository = userRepository;
+        this.bookingProcedureMapper = bookingProcedureMapper;
     }
 
     @Transactional
@@ -106,5 +111,11 @@ public class BookingService {
         }
 
         return basketShortInfo;
+    }
+
+    public List<BookingProcedureDto> getBasketInfo(Integer bookingId) {
+        List<BookingProcedure> bookingProcedures = bookingProcedureRepository.findBookingProceduresBy(bookingId);
+        List<BookingProcedureDto> bookingProcedureDtos = bookingProcedureMapper.toBookingProcedureDtos(bookingProcedures);
+        return bookingProcedureDtos;
     }
 }
